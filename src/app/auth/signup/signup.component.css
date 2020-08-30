@@ -1,0 +1,30 @@
+mat-form-field{
+    width: 100%;
+}
+mat-spinner{
+    margin:auto;
+}
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+  mat-icon{
+    height: 3rem;
+    width: 3rem;
+  }
+  input[type="file"]{
+    visibility: hidden;
+}
+input{
+    margin-top:2rem;
+}
+.image-preview{
+    height: 10rem;
+    margin: 1rem ;
+}
+
+.image-preview img {
+    height: 100%;
+}
+.profile-pic{
+    display: flex;
+}

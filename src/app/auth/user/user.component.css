@@ -1,0 +1,59 @@
+.profile-page{
+    margin-top: 3em;
+    width:100%;
+    height:100%;
+   
+    padding:auto;
+    display:flex;
+}
+.profile-img{
+    width:50%;
+    height:100%;
+}
+.profile-img img{
+    width:100%;
+    height:100%;
+    margin: 0px;
+    padding: 0px;
+}
+.profile-data{
+    margin-left: 1em;
+    width: 50%;
+    height:100%
+}
+mat-card{
+   
+    box-shadow: -15px -15px 15px rgba(255,255,255,0.2),15px 15px 15px rgba(0,0,0,0.1);
+}
+.profile-data h1 {
+    color: rgb(163, 19, 67);
+    font-weight: 800;
+    font-size: 2rem;
+    margin: 1em;
+    text-align: center;
+    
+}
+
+h2{
+    color:red;
+    font-weight: 600;
+    
+    margin: auto;
+}
+h4{
+    color:green;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 800;
+    font-size: 4em;
+    margin: 1rem;
+    text-align: left;
+}
+label{
+    color:blue;
+    font-weight: 600;
+    
+    margin: auto;
+}
+.spacer{
+    flex: 1 1 auto;
+}

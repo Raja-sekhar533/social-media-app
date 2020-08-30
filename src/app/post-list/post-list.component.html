@@ -1,0 +1,92 @@
+
+<!-- <mat-accordion *ngIf="posts.length >0 && !isLoading">
+    <mat-expansion-panel *ngFor="let post of posts">
+        <mat-expansion-panel-header>
+            <h1> {{ post.title }}</h1>
+        </mat-expansion-panel-header>
+        <div class="post-image">
+            <img [src]="post.imagePath" [alt]="post.title">
+        </div>
+        <p>{{ post.content }} </p>
+        <mat-action-row *ngIf="userIsAuthenticated && userId == post.creator ">
+            <button mat-raised-button color="primary" [routerLink] ="['/edit', post.id]">edit</button>
+            <button mat-raised-button color="accent"(click)="onDelete(post.id)">delete</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion> -->
+
+<div class="container-fluid" *ngIf="posts.length >0 && !isLoading">
+  <mat-spinner *ngIf= "isLoading"></mat-spinner>
+    <div *ngFor="let post of posts">
+    <div *ngFor="let user of users">
+        <div *ngIf="user._id == post.creator">
+<mat-card class="example-card container-fluid" >  
+  <mat-card-header > 
+    <div mat-card-avatar  class="example-header-image" ><img [src]="user.imagePath" [alt]="user.name"></div>
+    <mat-card-title><h1>{{user.name}} </h1></mat-card-title>
+    <mat-card-subtitle>{{ post.title }}</mat-card-subtitle>
+    <span class='spacer'></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" *ngIf="userIsAuthenticated && userId == post.creator ">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink] ="['/edit', post.id]" color="primary">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item (click)="onDelete(post.id)" color="accent">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+  </mat-card-header>
+
+  <img mat-card-image [src]="post.imagePath" [alt]="post.title">
+  <mat-card-content>
+     <p>{{ post.content }} </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    
+    <button  mat-button  *ngIf="post.id" (click)="like(post.id)"><mat-icon>thumb_up_alt
+    </mat-icon><span>{{likes}}</span></button>
+    
+    <button  aria-hidden="false" mat-button (click)="dislike()"><mat-icon>thumb_down
+    </mat-icon>{{dislikes}}</button>
+    
+    <button mat-button><mat-icon>chat_bubble_outline
+    </mat-icon></button>
+  
+    <!-- <mat-button-toggle-group formControlName="likesDis" (click)="toggle()">
+      <mat-button-toggle   value="like" [disabled]="likeDisable"><mat-icon>thumb_up_alt
+      </mat-icon>{{likes}}</mat-button-toggle>
+      <mat-button-toggle   value="dislike" [disabled]="disLikeDisable" ><mat-icon>thumb_down
+      </mat-icon>{{dislikes}}</mat-button-toggle>
+    </mat-button-toggle-group> -->
+
+
+  </mat-card-actions>
+</mat-card>
+</div>
+</div>
+</div>
+</div>
+
+<button class="post" mat-button *ngIf="userIsAuthenticated">
+  <a mat-button routerLink="/create"   routerLinkActive="mat-accent"><mat-icon><span class="icon"> add_circle</span></mat-icon></a>
+</button>
+
+<mat-paginator 
+[length]="totalPosts" 
+[pageSize]="postsPerPage" 
+[pageSizeOptions]="postsSizeOptions" 
+(page)="onChangePage($event)" 
+*ngIf="posts.length >0 ">
+</mat-paginator>
+
+<p class="info-text mat-body-1"
+ *ngIf="posts.length <= 0 && !isLoading">no post's yet</p>
+
+
+ 
+ 

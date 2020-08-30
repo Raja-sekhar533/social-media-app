@@ -1,0 +1,33 @@
+<div class="profile-page container">
+
+    <div class="profile-img" *ngIf="user" download>
+        <mat-card>
+            <img mat-card-image [src]='user.imagePath' [alt]="user.name" > 
+        </mat-card>
+       
+    
+    </div>
+    <div class="profile-data" *ngIf="user">
+      
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image">
+
+          </div>
+          <mat-card-title mat-label color="accent"><h1>{{ user.name}}</h1></mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+        <h2>Email: <label> {{user.email}}</label></h2>        
+        <h2>Mobile: <label> {{user.mobile}}</label></h2>        
+        <h2>gender: <label> {{user.gender}}</label></h2>        
+        <h2>address: <label>{{user.address}}</label> </h2>        
+        </mat-card-content>
+        
+      </mat-card>
+      <!-- <a href="/images/myw3schoolsimage.jpg" download>
+        <img src="/images/myw3schoolsimage.jpg" alt="W3Schools" width="104" height="142">
+      </a> -->
+    
+    </div>
+</div>

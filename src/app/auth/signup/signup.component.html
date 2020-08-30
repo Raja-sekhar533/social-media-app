@@ -1,0 +1,167 @@
+<!-- <mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form (submit)="onSignup(signUp)" #signUp="ngForm" [form]="ngForm" *ngIf="!isLoading">
+<div class="profile-pic">
+    <div>
+          <mat-label>Please Select Your Profile Image</mat-label> <br><br>
+
+          <button type="button" mat-fab aria-hidden="false" (click)="imagePick.click()"><mat-icon aria-label="add_circle" >add_circle</mat-icon></button>
+
+          <input type="file"  #imagePick ngModel name="profile" #profileImg="ngModel" required (change)="onImagePicked($event)">
+
+          <mat-error *ngIf="profileImg.invalid">please select your profile image</mat-error>
+        </div>
+          <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview ">
+            <img [src]="imagePreview" [alt]="profilePicture">
+        </div>
+    </div>
+         ( <div>
+            <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+            <input type="file" #filePicker (change)="onImagePicked($event)">
+        </div> 
+
+    <mat-form-field >
+        <mat-label>Please Enter Your Name</mat-label>
+    <input matInput type="text" ngModel name="name" #nameInput="ngModel" required >
+    <mat-error *ngIf="nameInput.invalid">
+    Please Enter Your Name!
+    </mat-error>
+    </mat-form-field>
+        <mat-form-field >
+            <mat-label>Please Enter Your Email</mat-label>
+            <input name="email" ngModel type="email" matInput  #emailInput="ngModel" required email> 
+            <mat-error *ngIf="emailInput.invalid" >
+                Please enter valid email !!!
+              </mat-error>
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Please Enter Your Password</mat-label>
+            <input type="password" ngModel name="password" matInput  #passInput="ngModel" required [type]="hide ? 'password' : 'text'">
+             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+            <mat-error *ngIf="passInput.invalid">
+                Please enter valid password!!!
+              </mat-error>
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Emter Your Mobile Number</mat-label>
+            <input type="number" matInput name="mobile" ngModel  #numInput="ngModel" required>
+            <mat-error *ngIf="numInput.invalid">Please Enter Your Mobile num!</mat-error>
+        </mat-form-field>
+
+            <mat-label>Select Gender</mat-label> <br><br>
+            <mat-radio-group appearance="fill" name="gender" required ngModel #genderInput="ngModel" aria-label="Select an option">
+                <mat-radio-button    #genderInput value="Male">Male </mat-radio-button>
+                <mat-radio-button   #genderInput value="Female">Female</mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="genderInput.invalid ">Select Gender</mat-error>
+              
+<br><br>
+<mat-form-field >
+
+    <mat-label>Address</mat-label>
+    <textarea matInput name="address" ngModel required #addressInput="ngModel"></textarea>
+    <mat-error *ngIf="addressInput.invalid">Please Enter Your Address</mat-error>
+  </mat-form-field>
+        <button mat-raised-button color="accent" *ngIf="!isLoading">SignUp</button>
+       
+    </form>
+</mat-card>
+     -->
+
+
+     <mat-card>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+ <form [formGroup]="form" (submit)="onSignup()"  *ngIf="!isLoading">
+
+    <div class="profile-pic">
+        <div>
+              <mat-label>Please Select Your Profile Image</mat-label> <br><br>
+    
+              <button type="button" mat-fab aria-hidden="false" (click)="imagePick.click()"><mat-icon aria-label="add_circle" >add_circle</mat-icon></button>
+    
+              <input type="file"  #imagePick   (change)="onImagePicked($event)">
+    
+              <mat-error *ngIf="imagePick.invalid">please select your profile image</mat-error>
+            </div>
+              <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+                <img [src]="imagePreview" [alt]="form.value.name">
+            </div>
+        </div>
+
+
+        <mat-form-field >
+            <mat-label>Please Enter Your Name</mat-label>
+        <input matInput type="text"  formControlName="name">
+        <mat-error *ngIf="form.get('name').invalid">
+        Please Enter Your Name!
+        </mat-error>
+        </mat-form-field>
+
+
+        
+        <mat-form-field >
+            <mat-label>Please Enter Your Email</mat-label>
+            <input  type="email" matInput formControlName="email"> 
+            <mat-error *ngIf="form.get('email').invalid" >
+                Please enter valid email !!!
+              </mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field >
+            <mat-label>Please Enter Your Password</mat-label>
+
+            <input type="password" matInput  formControlName="password" [type]="hide ? 'password' : 'text'">
+             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+
+            <mat-error *ngIf="form.get('password').invalid">
+                Please enter valid password!!!
+              </mat-error>
+        </mat-form-field>
+    
+
+
+        <mat-form-field >
+            <mat-label>Emter Your Mobile Number</mat-label>
+            <input type="number" matInput formControlName="mobile">
+            <mat-error *ngIf="form.get('mobile').invalid">Please Enter Your Mobile num!</mat-error>
+        </mat-form-field>
+
+
+
+                    <mat-label>Select Gender</mat-label> <br><br>
+            <mat-radio-group appearance="fill" formControlName="gender" aria-label="Select an option">
+                <mat-radio-button     value="Male">Male </mat-radio-button>
+                <mat-radio-button    value="Female">Female</mat-radio-button>
+              </mat-radio-group>
+              <mat-error *ngIf="form.get('gender').invalid ">Select Gender</mat-error>
+              
+                <br><br>
+
+
+
+                <mat-form-field >
+
+                    <mat-label>Address</mat-label>
+                    <textarea matInput formControlName="address"></textarea>
+                    <mat-error *ngIf="form.get('address').invalid">Please Enter Your Address</mat-error>
+                  </mat-form-field>
+
+
+                  <button mat-raised-button color="accent" *ngIf="!isLoading">SignUp</button>
+</form>
+
+</mat-card>
+
+
+
+
+
+

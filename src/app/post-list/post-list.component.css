@@ -1,0 +1,66 @@
+/* :host{
+    display: block;
+    margin-top:1rem;
+
+} */
+.info-text{
+    text-align: center;
+    color:red;
+}
+mat-spinner{
+    margin:auto;
+}
+
+mat-paginator{
+    margin-top: 1rem;
+ }
+ /*
+.post-image{
+    width: 100%;
+
+}
+.post-image img{
+    width: 100%;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+} */
+.example-card {
+    /* display: inline; */
+  width: 50%;
+  margin:auto;
+  margin-bottom: 2em;
+  margin-top:2em;
+  background-color: green;
+  position: relative;
+}
+
+.example-header-image  {
+  width:4rem;
+  height:4rem;
+  
+  margin:6px;
+}
+
+.example-header-image img {
+    width:4rem;
+    height:4rem;
+    background-color: red;
+    margin:0px;
+    padding: 0px;
+    border-radius: 20px;
+    position: relative;
+  }
+  .spacer{
+    flex: 1 1 auto;
+}
+.post mat-icon{
+position: fixed;
+bottom:5rem;
+right:6rem;
+z-index: 999;
+cursor: pointer;
+}
+
+.icon{
+    font-size: 5rem;  
+    color: hotpink;
+}
